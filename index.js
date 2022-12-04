@@ -31,10 +31,10 @@ app.use( // for parsing appication/x-www-form-urlencoded
     })
 )
 app.use(express.json())
-// app.use("/", require("./src/routes/index")) // Muestra index
+app.use("/", require("./src/routes/index")) // Muestra index
 
 app.get("/", (req, res) => {
-    res.send("Pagina de inicio")
+    res.send("Pagina de inicio JLF")
 })
 
 // Start the server
