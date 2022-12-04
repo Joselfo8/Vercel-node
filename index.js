@@ -42,4 +42,4 @@ app.listen(port, () => {
     console.log(`La aplicacion esta corriendo en el puerto ${port}`);
 })
 
-// initDB();
+initDB();
