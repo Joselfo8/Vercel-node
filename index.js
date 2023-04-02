@@ -19,20 +19,30 @@ const whiteList = [
 // Midlewaresserver 
 app.use(cors({origin: whiteList})) // Para dar permisos a algunas URL's
 app.use(morgan('dev'));
-app.use( // for parsing json
-    bodyParser.json({
-        limit: '20mb' // Limite de 20 megas por peticion
-    })
-)
-app.use( // for parsing appication/x-www-form-urlencoded
-    bodyParser.urlencoded({
-        limit: '20mb', 
-        extended: true
-    })
-)
-app.use(bodyParser.raw({ type: 'application/json' }))
+// app.use( // for parsing json
+//     bodyParser.json({
+//         limit: '20mb' // Limite de 20 megas por peticion
+//     })
+// )
+// app.use( // for parsing appication/x-www-form-urlencoded
+//     bodyParser.urlencoded({
+//         limit: '20mb', 
+//         extended: true
+//     })
+// )
+// app.use(
+//     // bodyParser.raw({ type: 'application/json' })
+//     bodyParser.raw()
+// )
+// app.use(express.json())
+// app.use(bodyParser.raw({ type: 'application/json' }))
 
-app.use(express.json())
+app.use(bodyParser.json({
+    verify: (req, res, buf) => {
+      req.rawBody = buf
+    }
+}))
+
 app.use("/", require("./src/routes/index")) // Muestra index
 
 app.get("/", (req, res) => {

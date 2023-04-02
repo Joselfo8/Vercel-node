@@ -13,8 +13,15 @@ const STRIPE_WEBHOOK_SECRET = 'whsec_731c32ddd516aeadf7516b5578a8de26f2e6d0ff6f6
 
 exports.stripeWebhook = async (req, res) => {    
     try {
+        // console.log('rawBody', req.rawBody);
+        // console.log('rawHeaders', req.rawHeaders);
         const headers = await req.headers
-        const body = await req.body
+        const body = await req.rawBody
+
+        // console.log({
+        //     msg: 'PRUEBA RAWBODY',
+        //     body
+        // });
         
         let data
 
@@ -57,15 +64,19 @@ exports.stripeWebhook = async (req, res) => {
             //     res.send('invoice.payment_succeeded_successfuly')
             //     return
             // }
+
             res.send({
                 msg: 'PRUEBA EXITOSA',
                 evento: event
             })
+
+            // res.send(body)
         }
     
     } catch (error) {
         res.send({
-            msj: 'ERROR STRIPE JLF',
+            msj: 'ERROR STRIPE JLF2',
+            body: req.rawBody,
             error
         })
     }

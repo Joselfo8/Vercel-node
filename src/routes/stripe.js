@@ -5,12 +5,21 @@ const controller = require('../controllers/stripe')
 
 const router = express.Router()
 
-/**
- * Ruta: /user GET
- */
 router.post(
     `/`, 
     controller.stripeWebhook
 )
+
+// router.post(
+//     '/',
+//     express.raw({
+//         inflate: true,
+//         limit: '50mb',
+//         type: () => true
+//     }), 
+//     async (req, res) => {
+//         console.log('RAWBODY', req.rawBody);
+//     res.json({ bodySize: req.body });
+// });
 
 module.exports = router
