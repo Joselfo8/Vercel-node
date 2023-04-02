@@ -16,6 +16,7 @@ exports.stripeWebhook = async (req, res) => {
         // console.log('rawBody', req.rawBody);
         // console.log('rawHeaders', req.rawHeaders);
         const headers = await req.headers
+        // const body = await req.body
         const body = await req.rawBody
 
         // console.log({
@@ -45,6 +46,8 @@ exports.stripeWebhook = async (req, res) => {
                 signature,
                 STRIPE_WEBHOOK_SECRET
             )
+
+            console.log('EVENTO EXITOSO', {event});
 
             // /**
             //  * The data is extracted according to event

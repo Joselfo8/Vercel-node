@@ -20,9 +20,11 @@ const whiteList = [
 app.use(cors({origin: whiteList})) // Para dar permisos a algunas URL's
 app.use(morgan('dev'));
 // app.use( // for parsing json
-//     bodyParser.json({
-//         limit: '20mb' // Limite de 20 megas por peticion
-//     })
+//     bodyParser.json(
+//         // {
+//         // limit: '20mb' // Limite de 20 megas por peticion
+//         // }
+//     )
 // )
 // app.use( // for parsing appication/x-www-form-urlencoded
 //     bodyParser.urlencoded({
@@ -43,10 +45,12 @@ app.use(bodyParser.json({
     }
 }))
 
+// app.use(express.raw());
+
 app.use("/", require("./src/routes/index")) // Muestra index
 
 app.get("/", (req, res) => {
-    res.send("Pagina de inicio JLF")
+    res.send("Pagina de inicio JLF - Prueba inicial")
 })
 
 // Start the server
