@@ -21,44 +21,51 @@ exports.stripeWebhook = async (req, res) => {
         let eventType
 
         if (STRIPE_WEBHOOK_SECRET) {
-        /**
-         * Stripe signature
-         */
-        const signature = await headers['stripe-signature']
+            /**
+             * Stripe signature
+             */
+            const signature = await headers['stripe-signature']
 
-        /**
-         * The event is created if the body arrives as raw and the signature is correct
-         */
-        const event = stripe .webhooks.constructEvent(
-            body,
-            signature,
-            STRIPE_WEBHOOK_SECRET
-        )
-
-        /**
-         * The data is extracted according to event
-         */
-        data = event.data
-        
-        eventType = event.type
-        } else {
-        data = body.data
-        eventType = body.type
-        }
-
-        
-        if (eventType === 'checkout.session.completed') {
             
-            res.send('checkout.session.completed_successfuly')
-            return
-        }
 
-        /**
-         * Case: event of type invoice payment succeeded
-         */
-        if (eventType === 'invoice.payment_succeeded') {
-            res.send('invoice.payment_succeeded_successfuly')
-            return
+            // /**
+            //  * The event is created if the body arrives as raw and the signature is correct
+            //  */
+            // const event = stripe .webhooks.constructEvent(
+            //     body,
+            //     signature,
+            //     STRIPE_WEBHOOK_SECRET
+            // )
+
+            // /**
+            //  * The data is extracted according to event
+            //  */
+            // data = event.data
+            
+            // eventType = event.type
+            // } else {
+            // data = body.data
+            // eventType = body.type
+            // }
+
+            
+            // if (eventType === 'checkout.session.completed') {
+                
+            //     res.send('checkout.session.completed_successfuly')
+            //     return
+            // }
+
+            // /**
+            //  * Case: event of type invoice payment succeeded
+            //  */
+            // if (eventType === 'invoice.payment_succeeded') {
+            //     res.send('invoice.payment_succeeded_successfuly')
+            //     return
+            // }
+            res.send({
+                body,
+                signature
+            })
         }
     
     } catch (error) {
