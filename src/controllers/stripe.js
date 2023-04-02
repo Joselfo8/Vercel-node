@@ -35,11 +35,11 @@ exports.stripeWebhook = async (req, res) => {
             */
             const signature = await headers['stripe-signature']
 
-            console.log('PRUEBA FIRMA', {
-                body,
-                signature,
-                STRIPE_WEBHOOK_SECRET
-            });
+            // console.log('PRUEBA FIRMA', {
+            //     body,
+            //     signature,
+            //     STRIPE_WEBHOOK_SECRET
+            // });
 
             const event = stripe .webhooks.constructEvent(
                 body,
