@@ -26,12 +26,13 @@ exports.stripeWebhook = async (req, res) => {
         let data
 
         let eventType
-
+        
+        const signature = await headers['stripe-signature']
+        
         if (STRIPE_WEBHOOK_SECRET) {
             /**
              * Stripe signature
              */
-            const signature = await headers['stripe-signature']
 
             
 
