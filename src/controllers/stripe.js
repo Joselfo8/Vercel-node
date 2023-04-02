@@ -70,11 +70,11 @@ exports.stripeWebhook = async (req, res) => {
             res.send({
                 msg: 'PRUEBA EXITOSA',
                 evento: event,
-                prueba: {
-                    body,
-                    signature,
-                    STRIPE_WEBHOOK_SECRET
-                }
+                
+                body: req.rawBody,
+                signature: signature,
+                ws: STRIPE_WEBHOOK_SECRET
+                
             })
 
             // res.send(body)
@@ -85,11 +85,11 @@ exports.stripeWebhook = async (req, res) => {
             msj: 'ERROR STRIPE JLF2',
             // body: req.rawBody,
             error,
-            prueba: {
-                body,
-                signature,
-                STRIPE_WEBHOOK_SECRET
-            }
+            
+            body: req.rawBody,
+            signature: signature,
+            ws: STRIPE_WEBHOOK_SECRET
+                
         })
     }
 }
