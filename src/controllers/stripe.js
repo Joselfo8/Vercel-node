@@ -26,16 +26,11 @@ exports.stripeWebhook = async (req, res) => {
              */
             const signature = await headers['stripe-signature']
 
-            
-
-            // /**
-            //  * The event is created if the body arrives as raw and the signature is correct
-            //  */
-            // const event = stripe .webhooks.constructEvent(
-            //     body,
-            //     signature,
-            //     STRIPE_WEBHOOK_SECRET
-            // )
+            const event = stripe .webhooks.constructEvent(
+                body,
+                signature,
+                STRIPE_WEBHOOK_SECRET
+            )
 
             // /**
             //  * The data is extracted according to event
@@ -64,13 +59,14 @@ exports.stripeWebhook = async (req, res) => {
             // }
             res.send({
                 msg: 'PRUEBA EXITOSA',
-                body,
-                signature
+                evento: event
             })
         }
     
     } catch (error) {
-        console.log(error);
-        handleHttpError(res, "ERROR_STRIPE")
+        res.send({
+            msj: 'ERROR STRIPE JLF',
+            error
+        })
     }
 }
