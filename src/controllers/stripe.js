@@ -27,14 +27,18 @@ exports.stripeWebhook = async (req, res) => {
 
         let eventType
         
-        const signature = await headers['stripe-signature']
         
         if (STRIPE_WEBHOOK_SECRET) {
             /**
              * Stripe signature
-             */
+            */
+            const signature = await headers['stripe-signature']
 
-            
+            console.log('PRUEBA FIRMA', {
+                body,
+                signature,
+                STRIPE_WEBHOOK_SECRET
+            });
 
             const event = stripe .webhooks.constructEvent(
                 body,
@@ -70,12 +74,7 @@ exports.stripeWebhook = async (req, res) => {
 
             res.send({
                 msg: 'PRUEBA EXITOSA',
-                evento: event,
-                
-                body: req.rawBody,
-                signature: signature,
-                ws: STRIPE_WEBHOOK_SECRET
-                
+                evento: event
             })
 
             // res.send(body)
@@ -84,13 +83,7 @@ exports.stripeWebhook = async (req, res) => {
     } catch (error) {
         res.send({
             msj: 'ERROR STRIPE JLF2',
-            // body: req.rawBody,
-            error,
-            
-            body: req.rawBody,
-            signature: signature,
-            ws: STRIPE_WEBHOOK_SECRET
-                
+            error
         })
     }
 }
