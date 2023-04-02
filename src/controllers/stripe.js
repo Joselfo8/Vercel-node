@@ -63,6 +63,7 @@ exports.stripeWebhook = async (req, res) => {
             //     return
             // }
             res.send({
+                msg: 'PRUEBA EXITOSA',
                 body,
                 signature
             })
