@@ -30,6 +30,8 @@ app.use( // for parsing appication/x-www-form-urlencoded
         extended: true
     })
 )
+app.use(bodyParser.raw({ type: 'application/json' }))
+
 app.use(express.json())
 app.use("/", require("./src/routes/index")) // Muestra index
 
