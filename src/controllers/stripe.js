@@ -8,8 +8,10 @@ const STRIPE_SECRET_KEY = 'sk_test_51LKaEAATR7GdGLkc4i6xnMNGGjPnm6QnSt4NiLCJFWM3
 const stripe = new Stripe(STRIPE_SECRET_KEY, {
     apiVersion: STRIPE_API_VERSION
   })
-const STRIPE_WEBHOOK_SECRET = 'whsec_731c32ddd516aeadf7516b5578a8de26f2e6d0ff6f6d6f242d66a533e9a0a4a0'
 
+const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || 'whsec_731c32ddd516aeadf7516b5578a8de26f2e6d0ff6f6d6f242d66a533e9a0a4a0'
+
+console.log('VARIABLE DE ENTORNO',STRIPE_WEBHOOK_SECRET);
 
 exports.stripeWebhook = async (req, res) => {    
     try {
