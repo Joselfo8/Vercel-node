@@ -17,6 +17,7 @@ exports.webhook = async (req, res) => {
     try {
         const headers = await req.headers
         const body = await req.body
+        console.log('LOG', body);
         res.send({
             msg: 'PRUEBA OPENPAY',
             body
