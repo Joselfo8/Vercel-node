@@ -39,11 +39,17 @@ app.use(morgan('dev'));
 // app.use(express.json())
 // app.use(bodyParser.raw({ type: 'application/json' }))
 
-app.use(bodyParser.json({
-    verify: (req, res, buf) => {
-      req.rawBody = buf
-    }
-}))
+// app.use(bodyParser.json({
+//     verify: (req, res, buf) => {
+//       req.rawBody = buf
+//     }
+// }))
+
+app.use(express.urlencoded({
+    extended: true
+  }))
+
+  app.use(express.json());
 
 // app.use(express.raw());
 
