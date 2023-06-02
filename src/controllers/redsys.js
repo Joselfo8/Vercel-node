@@ -8,13 +8,13 @@ exports.webhook = async (req, res) => {
         const params = await req.params
 
         console.log('LOG', {
-            msg: 'PRUEBA REDSYS',
-            res: {
-                // body,
-                // query,
-                // params
-                req
-            }
+            msg: 'RAW REDSYS',
+            // res: {
+            //     // body,
+            //     // query,
+            //     // params
+            // }
+            req
         });
         
         res.send({
