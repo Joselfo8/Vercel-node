@@ -6,15 +6,16 @@ exports.webhook = async (req, res) => {
         const body = await req.body
         const query = await req.query
         const params = await req.params
+        const raw = await req.raw
 
         console.log('LOG', {
             msg: 'RAW REDSYS',
-            // res: {
-            //     // body,
-            //     // query,
-            //     // params
-            // }
-            req
+            res: {
+                body,
+                query,
+                params,
+                raw
+            }
         });
         
         res.send({
