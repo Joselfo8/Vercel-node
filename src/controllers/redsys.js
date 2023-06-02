@@ -15,8 +15,6 @@ exports.webhook = async (req, res) => {
         const form = await req.formdata
         // const formData = await req.formData();
 
-        console.log('REUQEST', req);
-
         console.log('LOG', {
             msg: 'RAW REDSYS',
             res: {

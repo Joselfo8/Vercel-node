@@ -14,7 +14,7 @@ const router = express.Router()
 
 router.post('/:id', upload.fields([]), (req, res) => {
     console.log( 'BODY', req.body );
-    console.log( req.files );
+    console.log( 'FILES', req.files );
     res.sendStatus(200);
 });
 
