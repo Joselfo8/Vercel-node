@@ -10,9 +10,10 @@ exports.webhook = async (req, res) => {
         console.log('LOG', {
             msg: 'PRUEBA REDSYS',
             res: {
-                body,
-                query,
-                params
+                // body,
+                // query,
+                // params
+                req
             }
         });
         
