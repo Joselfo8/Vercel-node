@@ -45,9 +45,9 @@ app.use(morgan('dev'));
 //     }
 // }))
 
-// app.use(express.urlencoded({
-//     extended: true
-//   }))
+app.use(express.urlencoded({
+    extended: true
+  }))
 
 //   app.use(express.json());
 
